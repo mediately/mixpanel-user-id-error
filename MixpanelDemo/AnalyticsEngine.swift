@@ -9,8 +9,8 @@ import Foundation
 import Mixpanel
 
 struct API {
-    static let mixpanelToken = "b2b12cd93014f15c9720a4510f69958e"
-    static let mixpanelCountryToken = "d0d6b72fd1261f4c4e26e9ad15ceb481"
+    static let primaryMixpanelToken = "b2b12cd93014f15c9720a4510f69958e"
+    static let secondaryMixpanelToken = "d0d6b72fd1261f4c4e26e9ad15ceb481"
 }
 
 let AMMixpanelInstanceName = "com.modrajagoda.mixpanel"
@@ -18,42 +18,50 @@ let AMCountryMixpanelInstanceName = "com.modrajagoda.countryMixpanel"
 let DemoEvent = "DemoEvent"
 
 final class AnalyticsEngine {
-    var mixpanel: MixpanelInstance? {
+    var primaryMixpanel: MixpanelInstance? {
         get {
             return Mixpanel.getInstance(name: AMMixpanelInstanceName)
         }
     }
     
-    var countryMixpanel: MixpanelInstance? {
+    var secondaryMixpanel: MixpanelInstance? {
         get {
             return Mixpanel.getInstance(name: AMCountryMixpanelInstanceName)
         }
     }
     
+    var primaryMixpanelID: String {
+        return primaryMixpanel?.distinctId ?? "N/A"
+    }
+    
+    var secondaryMixpanelID: String {
+        return secondaryMixpanel?.distinctId ?? "N/A"
+    }
+    
     func instantiate() {
         Mixpanel.initialize(
-            token: API.mixpanelToken,
+            token: API.primaryMixpanelToken,
             instanceName: AMMixpanelInstanceName,
             optOutTrackingByDefault: false
         )
         
-        guard let mixpanel = mixpanel else { return }
-        mixpanel.serverURL = "https://api-eu.mixpanel.com"
-        mixpanel.identify(distinctId: mixpanel.distinctId)
+        guard let primaryMixpanel = primaryMixpanel else { return }
+        primaryMixpanel.serverURL = "https://api-eu.mixpanel.com"
+        primaryMixpanel.identify(distinctId: primaryMixpanel.distinctId)
         
         Mixpanel.initialize(
-            token: API.mixpanelCountryToken,
+            token: API.secondaryMixpanelToken,
             instanceName: AMCountryMixpanelInstanceName,
             optOutTrackingByDefault: false
         )
         
-        guard let countryMixpanel = countryMixpanel else { return }
-        countryMixpanel.serverURL = "https://api-eu.mixpanel.com"
-        countryMixpanel.identify(distinctId: mixpanel.distinctId)
+        guard let secondaryMixpanel = secondaryMixpanel else { return }
+        secondaryMixpanel.serverURL = "https://api-eu.mixpanel.com"
+        secondaryMixpanel.identify(distinctId: primaryMixpanel.distinctId)
     }
     
     func sendEvent() {
-        mixpanel?.track(event: DemoEvent)
-        countryMixpanel?.track(event: DemoEvent)
+        primaryMixpanel?.track(event: DemoEvent)
+        secondaryMixpanel?.track(event: DemoEvent)
     }
 }
