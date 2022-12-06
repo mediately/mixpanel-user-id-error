@@ -11,4 +11,8 @@ final class AnalyticsEngine {
     func instantiate() {
         
     }
+    
+    func sendEvent() {
+        
+    }
 }
