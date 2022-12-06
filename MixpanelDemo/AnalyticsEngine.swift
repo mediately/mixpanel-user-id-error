@@ -41,6 +41,7 @@ final class AnalyticsEngine {
     func instantiate() {
         Mixpanel.initialize(
             token: API.primaryMixpanelToken,
+            trackAutomaticEvents: true,
             instanceName: AMMixpanelInstanceName,
             optOutTrackingByDefault: false
         )
@@ -51,6 +52,7 @@ final class AnalyticsEngine {
         
         Mixpanel.initialize(
             token: API.secondaryMixpanelToken,
+            trackAutomaticEvents: true,
             instanceName: AMCountryMixpanelInstanceName,
             optOutTrackingByDefault: false
         )
