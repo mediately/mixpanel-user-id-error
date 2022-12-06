@@ -53,6 +53,7 @@ final class AnalyticsEngine {
     }
     
     func sendEvent() {
-        
+        mixpanel?.track(event: DemoEvent)
+        countryMixpanel?.track(event: DemoEvent)
     }
 }
