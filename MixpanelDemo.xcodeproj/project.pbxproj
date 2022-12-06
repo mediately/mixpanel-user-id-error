@@ -13,6 +13,7 @@
 		5396F93F293F3E7700711E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5396F93D293F3E7700711E8A /* Main.storyboard */; };
 		5396F941293F3E7800711E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5396F940293F3E7800711E8A /* Assets.xcassets */; };
 		5396F944293F3E7800711E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5396F942293F3E7800711E8A /* LaunchScreen.storyboard */; };
+		5396F94D293F3F3B00711E8A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 5396F94C293F3F3B00711E8A /* Mixpanel */; };
 		5396F94F293F3F9500711E8A /* AnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5396F94E293F3F9500711E8A /* AnalyticsEngine.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5396F94D293F3F3B00711E8A /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = MixpanelDemo;
+			packageProductDependencies = (
+				5396F94C293F3F3B00711E8A /* Mixpanel */,
+			);
 			productName = MixpanelDemo;
 			productReference = 5396F934293F3E7700711E8A /* MixpanelDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 5396F92B293F3E7700711E8A;
+			packageReferences = (
+				5396F94B293F3F3B00711E8A /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+			);
 			productRefGroup = 5396F935293F3E7700711E8A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -362,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5396F94B293F3F3B00711E8A /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 3.1.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5396F94C293F3F3B00711E8A /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5396F94B293F3F3B00711E8A /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5396F92C293F3E7700711E8A /* Project object */;
 }

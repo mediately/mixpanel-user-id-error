@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift",
+      "state" : {
+        "revision" : "8ecce4c2ce14f130fe1c5e043bb0f7f23b34051d",
+        "version" : "3.1.7"
+      }
+    }
+  ],
+  "version" : 2
+}
