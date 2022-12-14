@@ -377,7 +377,7 @@
 			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
 			requirement = {
 				kind = exactVersion;
-				version = 4.0.4;
+				version = 2.10.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
